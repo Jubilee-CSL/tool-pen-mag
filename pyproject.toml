@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tool-pen-maag"
+version = "0.1.0"
+description = "Pen Machine Agency tool plugin for science-jubilee"
+requires-python = ">=3.10"
+dependencies = ["science-jubilee>=0.0.0"]
+
+[project.entry-points."science_jubilee.tools"]
+tool_pen_maag = "tool_pen_maag.tool:PenMaag"
+
+[project.entry-points."science_jubilee.tools.mocks"]
+tool_pen_maag = "tool_pen_maag.mock:PenMaagMock"
+
+[project.entry-points."science_jubilee.tools.configs"]
+tool_pen_maag = "tool_pen_maag.configs:__path__"
+
+[project.entry-points."science_jubilee.tools.twin_assets"]
+tool_pen_maag = "tool_pen_maag._paths:get_twin_assets_dir"
+
+[project.scripts]
+pen_maag_draw = "tool_pen_maag.scripts.draw_deck:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
